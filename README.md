@@ -25,7 +25,7 @@
 ● AWS S3  
 
 ### Frontend  
-●   
+● Unity   
   
 ### ML  
 ● Openpose  
@@ -37,6 +37,7 @@
 ● Kubernetes   
 ● Kafka  
 ● Spark  
+● Helm  
 
 ### BI  
 ● Tableau  
