@@ -51,8 +51,8 @@
 
 
 ## Blueprint
-● 
-https://user-images.githubusercontent.com/50973139/168729697-e1ffef60-4e8f-4bd4-896d-42dff84dd048.png
+● 아키텍처
+![image](https://user-images.githubusercontent.com/50973139/168729697-e1ffef60-4e8f-4bd4-896d-42dff84dd048.png)
 
 
 ## Team members
