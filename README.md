@@ -51,7 +51,9 @@
 
 
 ## Blueprint
-(설계도 및 아키텍쳐 추가)
+● 
+https://user-images.githubusercontent.com/50973139/168729697-e1ffef60-4e8f-4bd4-896d-42dff84dd048.png
+
 
 ## Team members
 |팀원|담당 파트|역할|
