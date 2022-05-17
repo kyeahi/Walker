@@ -3,8 +3,8 @@
 # pip install opencv-python
 # pip install awscli
 # pip install boto3
-# 액세스 키 ID : AKIAQH3MTQK5PMGIHUMJ
-# 액세스 키 PW : 7BOQo+zMIb6qwlHSqyqu0hFgIVRwodwTaJW9KwHj
+# 액세스 키 ID : 
+# 액세스 키 PW : 
 
 import subprocess
 from hdfs import InsecureClient
