@@ -1,0 +1,5 @@
+walking.zip : 추출된 프레임 zip 파일 (3d_openpose에서 사용)
+walker.csv : 이미지로부터 추출된 3d position 값
+openpose_test.csv : 기본 openpose로부터 추출된 2d point 값
+3d_extracted_position : 3차원 데이터가 공간상에 표현된 이미지들
+walker_dir.csv : 프레임간 관절 rotation 변화 값
