@@ -36,8 +36,10 @@ class Program
                     {
                         var cr = c.Consume(cts.Token);
                         JObject json = JObject.Parse(cr.Value);
-                        var value = json["str"].ToString();       // 다운받으려는 파일의 이름
-                        Console.WriteLine(value);                 
+                        var valuept = json["pt"].ToString(); // pt 파일 다운로드
+                        Console.WriteLine(valuept);
+                        var valuecsv = json["csv"].ToString();
+                        Console.WriteLine(valuecsv);         // csv 파일 다운로드
                     }
                     catch (ConsumeException e)
                     {
