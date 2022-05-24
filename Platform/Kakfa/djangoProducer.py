@@ -16,7 +16,7 @@ def sendfile():
         value_serializer=lambda v: dumps(v).encode('utf-8'),
     )
 
-    client_hdfs = InsecureClient('http://192.168.66.143' + ':9870') # IP 주소 적기
+    client_hdfs = InsecureClient('Ip Adress' + ':9870') # IP 주소 적기
     client_hdfs.upload('/', './media/result/' + str(num) + '.mp4') # 저장한 mp4 파일 
 
     producer.send('video', {
