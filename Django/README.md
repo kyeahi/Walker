@@ -1,4 +1,4 @@
-# walkerDjango
+# walkerWeb
 ## 🔹 개발환경
 * Linux
 * PyCharm
