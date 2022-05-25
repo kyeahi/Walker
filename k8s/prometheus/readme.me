@@ -8,6 +8,7 @@ kubectl -n kube-system edit cm kube-proxy
     mode: ""
 
 
+
 ## Helm Chart
 
 helm repo add prometheus-community
@@ -16,8 +17,59 @@ helm repo update
 helm pull prometheus-community/kube-prometheus-stack
 tar xvfz kube-prometheus-stack-35.3.1.tgz
 
-#관리를 위해 directory 이름을 version 이름으로 변경
-mv kube-prometheus-stack kube-prometheus-stack-35.3.1
+mv kube-prometheus-stack kube-prometheus-stack-35.3.1   # 관리를 위해 directory 이름을 version 이름으로 변경
+
+cd kube-prometheus-stack-35.3.1
+cp values.yaml my-values.yaml    # 향후 히스토리 확인을 위해 values 복사
 
 
-# values.yaml 수정
+
+## my-values.yaml 수정
+
+alertmanager
+
+    ## Service type         # ClusterIP 에서 NodePort 또는 LoadBalncer 로 변경
+    ##
+    type: 'LoadBalancer'    
+    
+    
+prometheus
+
+    ## Service type         # ClusterIP 에서 NodePort 또는 LoadBalncer 로 변경
+    ##
+    type: 'LoadBalancer'    
+    
+    ## How long to retain metrics   # 데이터를 유지하는 기간
+    ##
+    retention: 10d 
+
+    ## Maximum size of metrics  # 데이터 용량
+    ##
+    retentionSize: "20GB"
+    
+    ## Resource limits & requests   # scrape metric 이 많은경우 resource 문제가 있을 수 있어 여유롭게 할당
+    ##
+    resources:              
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+      
+    storageSpec:            # local-storage 사용
+    ## Using PersistentVolumeClaim
+    ##
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-storage
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+        selector: {}
+
+      
+      
+
+    
