@@ -68,3 +68,43 @@ prometheus
             requests:
               storage: 20Gi
         selector: {}
+
+
+
+## grafana values.yaml 수정
+
+cd /kube-prometheus-stack-35.3.1/charts/grafana
+cp values.yaml defult-values.yaml   # 향후 히스토리 확인을 위해 values 복사
+
+
+
+## values.yaml 수정
+
+    ## Expose the grafana service to be accessed from outside the cluster (LoadBalancer service).
+    ## or access it from within the cluster (ClusterIP service). Set the service type and the port to serve it.
+    ## ref: http://kubernetes.io/docs/user-guide/services/
+    ##
+    service:                # ClusterIP 에서 NodePort 또는 LoadBalncer 로 변경
+      enabled: true
+      type: 'LoadBalancer'
+
+    
+    resources:              # scrape metric 이 많은경우 resource 문제가 있을 수 있어 여유롭게 할당
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+    ## Enable persistence using Persistent Volume Claims
+    ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+    ##
+    persistence:
+      type: pvc
+      enabled: false
+      storageClassName: local-storage   # local-storage 사용
+      accessModes:
+        - ReadWriteOnce
+  size: 10Gi
+
