@@ -1,3 +1,5 @@
+# dashboard 를 위한 admin 계정
+
 apiVersion: v1
 kind: ServiceAccount
 metadata:
