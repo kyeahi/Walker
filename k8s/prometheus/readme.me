@@ -4,5 +4,20 @@
 kubectl -n kube-system edit cm kube-proxy
 
     kind: KubeProxyConfiguration
-    metricsBindAddress: "0.0.0.0:10249"
+    metricsBindAddress: "0.0.0.0:10249" # 수정
     mode: ""
+
+
+## Helm Chart
+
+helm repo add prometheus-community
+helm repo update
+
+helm pull prometheus-community/kube-prometheus-stack
+tar xvfz kube-prometheus-stack-35.3.1.tgz
+
+#관리를 위해 directory 이름을 version 이름으로 변경
+mv kube-prometheus-stack kube-prometheus-stack-35.3.1
+
+
+# values.yaml 수정
