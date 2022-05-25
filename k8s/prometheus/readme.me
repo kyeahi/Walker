@@ -1,1 +1,8 @@
-dd
+# kube-proxy의 메트릭 바인딩 주소는 기본적으로 127.0.0.1:10249 prometheus 인스턴스 가 액세스할 수 없는 주소입니다. 
+# 메트릭 을 수집하려면 metricsBindAddress필드 값을 .0.0.0.0:10249 로 변경하여 메트릭을 노출해야 합니다
+
+kubectl -n kube-system edit cm kube-proxy
+
+    kind: KubeProxyConfiguration
+    metricsBindAddress: "0.0.0.0:10249"
+    mode: ""
