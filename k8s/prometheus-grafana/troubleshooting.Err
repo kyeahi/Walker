@@ -57,3 +57,12 @@ chown -R 65534:65534 /mnt/prometheus
 해결 :
 https://github.com/istio/istio/issues/26367
 kubectl rollout restart deployment prometheus-grafana -n monitoring    # deployment 재실행
+
+
+
+## grafana 의 admin 계정의 비밀번호가 admin이 아닐때
+
+kubectl exec --namespace monitoring -it prometheus-grafana-645f6f9fdc-t8sfq -c grafana grafana-cli admin reset-admin-password admin
+
+참고 : 
+https://jmholly.tistory.com/entry/Grafana-Admin-Password-%EC%9E%8A%EC%96%B4%EB%B2%84%EB%A0%B8%EC%9D%84%EB%95%8C-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0-helm
