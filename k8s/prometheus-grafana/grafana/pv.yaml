@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-my-relaese-grafana-pv-0
+  namespace: monitoring
+spec:
+  capacity:
+    storage: 10Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+   path: /mnt/grafana
