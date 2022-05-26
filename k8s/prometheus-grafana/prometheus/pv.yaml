@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-my-relaese-prometheus-pv-0
+  namespace: monitoring
+spec:
+  capacity:
+    storage: 20Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+   path: /mnt/prometheus
