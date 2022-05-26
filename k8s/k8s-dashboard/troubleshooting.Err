@@ -1,0 +1,11 @@
+## 1.24버전 부터는 비밀 기반 토큰이 자동으로 생성되지 않음
+## sa를 생성해도 secret이 자동으로 할당되지 않는다.
+
+토큰이 없어 로그인을 못하는 상황이 발생.
+
+해결 :
+kubectl -n kubernetes-dashboard create token admin-user
+
+참고 :
+https://github.com/kubernetes/dashboard/pull/6967
+https://github.com/kubernetes/dashboard/releases/tag/v2.5.1
