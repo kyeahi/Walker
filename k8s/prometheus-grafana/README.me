@@ -6,6 +6,9 @@ kubectl -n kube-system edit cm kube-proxy
     kind: KubeProxyConfiguration
     metricsBindAddress: "0.0.0.0:10249" # 수정
     mode: ""
+    
+kubectl rollout restart ds kube-proxy -n kube-system    # 재시작
+
 
 
 
@@ -108,3 +111,9 @@ cp values.yaml defult-values.yaml   # 향후 히스토리 확인을 위해 value
         - ReadWriteOnce
       size: 10Gi
 
+
+
+## install prometheus
+
+kubectl create ns monitoring            # 관리할 ns 설정
+helm install prometheus -f my-values.yaml prometheus-community/kube-prometheus-stack --namespace monitoring
