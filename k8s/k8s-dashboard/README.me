@@ -1,1 +1,11 @@
-# prometheus 와 grafana의 도입으로 더이상 사용하지 않습니다
+#### prometheus 와 grafana 의 도입으로 더이상 사용하지 않습니다
+#### dashboard 는 사용하지 않습니다
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+
+kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
+
+  selector:
+    k8s-app: kubernetes-dashboard
+  sessionAffinity: None
+  type: LoadBalancer        # NodePort, LoadBalancer 중 선택
