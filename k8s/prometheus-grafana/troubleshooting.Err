@@ -2,6 +2,7 @@
 
     Warning  Failed            20s (x9 over 108s)    kubelet            Error: stat /mnt/prometheus: no such file or directory
 
+해결 :
 pv volume mount err 
 pod/prometheus-prometheus-kube-prometheus-prometheus-0 가 설치되어 있는 worker 로 이동 후 /mnt/prometheus directory 생성
 
@@ -18,8 +19,9 @@ pod/prometheus-prometheus-kube-prometheus-prometheus-0 가 설치되어 있는 w
     main.main()
     /app/cmd/prometheus/main.go:361 +0x52bd
     [root@devops-monitoring ~]#
-    
-권한 에러 해결 방법은 2가지이다.
+
+해결 :
+권한 에러 해결 방법은 2개 입니다.
 1. 
 https://github.com/prometheus/prometheus/issues/5976 
 
@@ -45,3 +47,13 @@ chown -R 65534:65534 /mnt/prometheus
 
 
 
+## kubectl describe pod/prometheus-grafana-645f6f9fdc-t8sfq -n monitoring  
+
+    Normal   Pulled            27m                kubelet            Container image "grafana/grafana:8.5.0" already present on machine
+    Normal   Created           27m                kubelet            Created container grafana
+    Normal   Started           27m                kubelet            Started container grafana
+    Warning  Unhealthy         27m (x6 over 27m)  kubelet            Readiness probe failed: Get "http://172.16.189.127:3000/api/health": dial tcp 172.16.189.127:3000: connect: connection refused
+
+해결 :
+https://github.com/istio/istio/issues/26367
+kubectl rollout restart deployment prometheus-grafana -n monitoring    # deployment 재실행
