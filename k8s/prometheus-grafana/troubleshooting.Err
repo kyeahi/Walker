@@ -1,0 +1,47 @@
+## pod/prometheus-prometheus-kube-prometheus-prometheus-0 CreateContainerConfigError
+
+    Warning  Failed            20s (x9 over 108s)    kubelet            Error: stat /mnt/prometheus: no such file or directory
+
+pv volume mount err 
+pod/prometheus-prometheus-kube-prometheus-prometheus-0 가 설치되어 있는 worker 로 이동 후 /mnt/prometheus directory 생성
+
+
+
+## kubectl logs pod/prometheus-prometheus-kube-prometheus-prometheus-0 -n monitoring 
+
+    level=error ts=2019-08-30T05:14:43.160Z caller=query_logger.go:82 component=activeQueryTracker msg="Error opening query log file" file=/prometheus/queries.active err="open /prometheus/queries.active: permission denied"
+    panic: Unable to create mmap-ed active query log
+
+    goroutine 1 [running]:
+    github.com/prometheus/prometheus/promql.NewActiveQueryTracker(0x7ffef5ed3f02, 0xb, 0x14, 0x2a6b7c0, 0xc000596cf0, 0x2a6b7c0)
+    /app/promql/query_logger.go:112 +0x4d2
+    main.main()
+    /app/cmd/prometheus/main.go:361 +0x52bd
+    [root@devops-monitoring ~]#
+    
+권한 에러 해결 방법은 2가지이다.
+1. 
+https://github.com/prometheus/prometheus/issues/5976 
+
+  ## Security context to be added to server pods
+  ##
+  securityContext:
+    runAsUser: 1000   <- - modify this to 1000, 65534 original
+    runAsNonRoot: true
+    runAsGroup: 65534
+    fsGroup: 2000   <- - modify this to 2000, 65534 original
+    
+2. 
+https://www.sysspace.net/post/kubernetes-administration-monitoring-cluster-health-with-prometheus
+
+  securityContext:    # 기본으로 설정되있는 권한값
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+
+chown -R 65534:65534 /mnt/prometheus
+chown -R 65534:65534 /mnt/prometheus
+
+
+
