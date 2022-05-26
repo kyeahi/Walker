@@ -116,4 +116,4 @@ cp values.yaml defult-values.yaml   # 향후 히스토리 확인을 위해 value
 ## install prometheus
 
 kubectl create ns monitoring            # 관리할 ns 설정
-helm install prometheus -f my-values.yaml prometheus-community/kube-prometheus-stack --namespace monitoring
+helm install prometheus kube-prometheus-stack-35.3.1 -n monitoring
