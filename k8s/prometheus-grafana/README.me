@@ -27,7 +27,7 @@ cp values.yaml default-values.yaml    # 향후 히스토리 확인을 위해 val
 
 
 
-## my-values.yaml 수정
+## prometheus values.yaml 수정
 
 alertmanager
 
@@ -78,10 +78,6 @@ prometheus
 
 cd /kube-prometheus-stack-35.3.1/charts/grafana
 cp values.yaml defult-values.yaml   # 향후 히스토리 확인을 위해 values 복사
-
-
-
-## values.yaml 수정
 
     ## Expose the grafana service to be accessed from outside the cluster (LoadBalancer service).
     ## or access it from within the cluster (ClusterIP service). Set the service type and the port to serve it.
