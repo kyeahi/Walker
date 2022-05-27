@@ -10,3 +10,8 @@ jenkins pod가 예약한 노드를 찾지 못했습니다.
 
 해결 :
     jenkins values.yaml 수정
+    
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Exists
