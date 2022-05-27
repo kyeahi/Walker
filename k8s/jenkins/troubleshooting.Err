@@ -1,4 +1,4 @@
-## taint, tolerations Err
+#### taint, tolerations Err
 
 jenkins pod가 예약한 노드를 찾지 못했습니다.
 
@@ -17,7 +17,8 @@ jenkins pod가 예약한 노드를 찾지 못했습니다.
       operator: Exists
 
 
-## jenkins-0   0/2     Init:CrashLoopBackOff   5 (58s ago)   7m1s
+
+#### jenkins-0   0/2     Init:CrashLoopBackOff   5 (58s ago)   7m1s
 
 pod의 carshloopbackoff 반복
 
@@ -46,3 +47,10 @@ kubectl logs pod/jenkins-0 -c init -n jenkins           # 권한 에러
     mkdir jenkins_home
     
     chmod 777 jenkins_home
+    
+    
+    
+#### 역방향 프록시 설정 에러
+
+Dashboard -> jenkins 관리 -> 시스템 설정 
+    jenkins URL 을 master ip : prot(loadbalancer로 열어준 jenkins port) 로 설정.
