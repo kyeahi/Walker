@@ -1,0 +1,38 @@
+지금까지 helm으로 받고 edit으로 pod 나 svc 를 들어가서 수정하는 방식으로 했는데
+
+이렇게 하니 관리하는데에 어려움이 생겼습니다. 
+
+각 폴더들과 pod에 맞는 .yaml 들의 위치도 엉망입니다.
+
+지금까지 하는 방식은 주먹 구구식인 방법인것 같아 다시 처음부터 시작하려 합니다.
+
+다시 설치 하는 과정에서 전에 봤던 Err를 발견 했지만 바쁘다고 개발일지를 쓰지 않아 
+
+같은 Err 고치는법을 또 찾는 일이 발생했습니다 깃허브 관리도 개발일지도 바로바로 씁니다.
+
+
+
+관리법 입니다.
+
+먼저 helm pull로 차트를 로컬로 가져와서 압축을 풀은 뒤
+
+폴더 이름을 버전 이름으로 바꾸고.
+
+원래의 value.yaml 파일을 default-value.yaml 로 하나 복사해 둔 후
+
+value.yaml의 파일을 수정해서 install 했습니다.
+
+각 폴더에 pv 및 설정 .yaml을 저장해 찾아가기 쉽게 했습니다.
+
+모든 pv의 이름은 data-my-relaese-"디플로이이름"-pv-"pv번호 0번부터 시작" 으로 통일 했습니다.
+ex) data-my-release-prometheus-pv-0
+
+모든 pvc의 이름은 data-my-release-"디플로이이름"-pvc-"pv번호 0번부터 시작" 으로 통일 했습니다.
+ex) data-my-release-prometheus-pvc-0
+
+
+
+
+일단 k8s를 다시 설치 할 필요는 없으니 모니터링 도구 -> 젠킨스 -> 데이터 파이프라인 순으로 각각 ns를 지정해주며 확실하게 관리할 수 있도록 수정하고있습니다.
+
+prometheus와 grafana 는 monitoring namespaces 로 해서 다시 설치 했습니다.
