@@ -9,3 +9,11 @@ kubectl -n kubernetes-dashboard create token admin-user
 참고 :
 https://github.com/kubernetes/dashboard/pull/6967
 https://github.com/kubernetes/dashboard/releases/tag/v2.5.1
+
+
+
+## 다른 컴퓨터의 Lens에서 kubernetes로 접속 불가.
+
+원인 : .kube/config의 server가 127.0.0.1 로 되어 있다.
+
+해결 : .kube/config의 server의 ip 주소를 마스터 노드의 주소로 변경
