@@ -15,3 +15,34 @@ jenkins pod가 예약한 노드를 찾지 못했습니다.
     - effect: NoSchedule
       key: node-role.kubernetes.io/control-plane
       operator: Exists
+
+
+## jenkins-0   0/2     Init:CrashLoopBackOff   5 (58s ago)   7m1s
+
+pod의 carshloopbackoff 반복
+
+kubectl describe pod/jenkins-0 -n jenkins               # 별다른 오류 없음
+
+kubectl logs pod/jenkins-0 -n jenkins
+    Defaulted container "jenkins" out of: jenkins, config-reload, init (init)       # init 단계에서 에러가 발생
+    Error from server (BadRequest): container "jenkins" in pod "jenkins-0" is waiting to start: PodInitializing 
+
+원인 : 
+kubectl logs pod/jenkins-0 -c init -n jenkins           # 권한 에러
+    disable Setup Wizard
+    /var/jenkins_config/apply_config.sh: 4: cannot create /var/jenkins_home/jenkins.install.UpgradeWizard.state: Permission denied
+
+
+해결 방법 1:
+    values.yaml 수정
+    
+    runAsUser: 0
+    fsGroup: 0
+    
+해결 방법 2:
+    chmod 777 var
+    
+    cd /var
+    mkdir jenkins_home
+    
+    chmod 777 jenkins_home
