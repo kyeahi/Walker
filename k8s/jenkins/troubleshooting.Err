@@ -66,7 +66,7 @@ Dashboard -> jenkins 관리 -> 시스템 설정
     Startup probe failed: HTTP probe failed with statuscode: 503
     
 해결 : 
-kubectl edit statefulset my-controller          # statefulset 변경
+kubectl edit statefulset my-controller          # statefulset 값 변경
 
         livenessProbe:
           failureThreshold: 5
