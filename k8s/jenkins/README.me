@@ -18,14 +18,10 @@ cp values.yaml default-values.yaml    # 향후 히스토리 확인을 위해 val
   adminPassword: "admin"              # 비밀번호를 admin 으로
 
   serviceType: LoadBalancer           # service를 로드밸런서로
-  
-  
-  nodeSelector:
-    kubernetes.io/master: sub         # 마스터노드의 cd /host
 
   tolerations:                        # 마스터 노드에 배포할 수 있게 한다.
   - effect: NoSchedule
-    key: node-role.kubernetes.io/master
+    key: node-role.kubernetes.io/control-plane    # 기본값은  node-role.kubernetes.io/master
     operator: Exists
 
 
