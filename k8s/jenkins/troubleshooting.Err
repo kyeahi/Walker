@@ -54,3 +54,30 @@ kubectl logs pod/jenkins-0 -c init -n jenkins           # 권한 에러
 
 Dashboard -> jenkins 관리 -> 시스템 설정 
     jenkins URL 을 master ip : prot(loadbalancer로 열어준 jenkins port) 로 설정.
+
+
+
+#### probe 3단 콤보.. 프로토스의 넥서스가 되어버린 느낌이였다.
+
+원인 : 잘 모르겠음..
+
+    Readiness probe failed: HTTP probe failed with statuscode: 503
+    Liveness probe failed: HTTP probe failed with statuscode: 503
+    Startup probe failed: HTTP probe failed with statuscode: 503
+    
+해결 : 
+kubectl edit statefulset my-controller          # statefulset 변경
+
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /login
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 300             
+          periodSeconds: 10                     
+          successThreshold: 1
+          timeoutSeconds: 5
+
+참고 : 
+https://support.cloudbees.com/hc/en-us/articles/360041796991-How-to-Troubleshoot-and-Address-Liveness-Readiness-probe-failure
