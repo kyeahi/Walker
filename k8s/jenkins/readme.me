@@ -1,1 +1,43 @@
-dd
+## Helm Chart
+
+helm repo add jenkinsci https://charts.jenkins.io/
+helm repo update
+
+helm pull jenkins/jenkins
+tar xvfz jenkins-4.1.1.tgz
+mv jenkins jenkins-4.1.1        # 관리를 위해 directory 이름을 version 이름으로 변경
+
+cd jenkins-4.1.1
+cp values.yaml default-values.yaml    # 향후 히스토리 확인을 위해 values 복사
+
+
+
+## jenkins values.yaml 수정
+
+  adminUser: "admin"
+  adminPassword: "admin"              # 비밀번호를 admin 으로
+
+  serviceType: LoadBalancer           # service를 로드밸런서로
+  
+  
+  nodeSelector:
+    kubernetes.io/master: sub         # 마스터노드의 cd /host
+
+  tolerations:                        # 마스터 노드에 배포할 수 있게 한다.
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    operator: Exists
+
+
+참고 :
+https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
+https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+
+
+
+## install jenkins
+
+kubectl create jenkins                # ns jenkins 생성
+helm install jenkins jenkins-4.1.1 -n jenkins
+
+
