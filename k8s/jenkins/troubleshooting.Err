@@ -1,0 +1,12 @@
+## taint, tolerations Err
+
+jenkins pod가 예약한 노드를 찾지 못했습니다.
+
+원인 :
+    tolerations 의 key로 node-role.kubernetes.io/master 라고 해줬는데
+
+    내 쿠버네티스의 taint는 
+    Taints:             node-role.kubernetes.io/control-plane:NoSchedule 였습니다.
+
+해결 :
+    jenkins values.yaml 수정
