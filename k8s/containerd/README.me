@@ -1,0 +1,17 @@
+config.toml
+        systemd 를 cgroup driver 로 사용하기 위해 변경한 config.toml 파일 입니다.
+
+install.config
+        containerd 를 사용해 k8s cluster 를 구성 하는 과정이 있는 파일 입니다.
+
+local-storage.yaml
+        StorageClass 의 정의 파일 입니다 pv와 pvc 정의 파일은 각각의 앱 폴더 안에 있습니다.
+
+master_node.sh
+        master 의 설정 파일 입니다. join token 과 CNI 설정 이 들어있습니다.
+
+metallb_config.yaml
+        metalLB 의 정의 파일 입니다. 
+        
+work_nodes.sh
+        worker 의 설정 파일 입니다.
