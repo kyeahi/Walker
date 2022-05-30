@@ -65,7 +65,7 @@ Dashboard -> jenkins 관리 -> 시스템 설정
     Liveness probe failed: HTTP probe failed with statuscode: 503
     Startup probe failed: HTTP probe failed with statuscode: 503
     
-해결 : 
+해결 : 활성 프로브 구현
 kubectl edit statefulset my-controller          # statefulset 값 변경
 
         livenessProbe:
@@ -81,3 +81,4 @@ kubectl edit statefulset my-controller          # statefulset 값 변경
 
 참고 : 
 https://support.cloudbees.com/hc/en-us/articles/360041796991-How-to-Troubleshoot-and-Address-Liveness-Readiness-probe-failure
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
