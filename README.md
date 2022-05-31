@@ -55,7 +55,8 @@
 ![image](https://user-images.githubusercontent.com/50973139/168729697-e1ffef60-4e8f-4bd4-896d-42dff84dd048.png)
 
 
-## Team members
+## Team members![Screenshot from 2022-05-31 12-02-24](https://user-images.githubusercontent.com/97927143/171084504-23ef0c48-ac65-42f3-956c-0da93c96415a.png)
+
 |팀원|담당 파트|역할|
 |------|---|---|
 |김빛가람|플랫폼|Docker, Kubernetes 환경구축|
