@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('git scm update') {
       steps {
-        git url: 'https://github.com/kyeahi/Walker/tree/main/Django.git', branch: 'main''          
+        git url: 'https://github.com/kyeahi/Walker/tree/main/Django.git', branch: 'main'      
       }          
     }
     stage('docker build and push') {
