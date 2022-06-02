@@ -1,31 +1,37 @@
 # Kafka
 
 ## Installation
-`pip install kafka-python`
-- Kafka Python API
+`Install-Package Newtonsoft.Json`
+- Dotnet Json
+`Install-Package Confluent.Kafka -Version 1.8.2`
+- Kafka Dotnet API
 
 ## Command
-### Producer
-### Connection
-`producer = KafkaProducer(acks, compression_type, bootstrap_servers)`
-- acks : 메세지를 보낸 후 요청 완료 전 승인 수
-- bootstrap.server : broker 리스트
-- compression_type : 데이터 압축 종류
-### Send
-`producer.send()`
-- JSON 형식으로 보낼 것
-### Flush
-`producer.flush()`
-- Send 이후, flush 필요함 > 이전의 값이 남아있음<br><hr>
-
 ### Consumer
 ### Connection
-`consumer = KafkaConsumer(topic_name, bootstrap_servers, auto_offset_reset, enable_auto_commit, group_id, value_deserializer, consumer_timeout_ms)`
-- bootstrap_servers : broker 리스트
-- auto_offset_reset : 오프셋 값 설정
-- enable_auto_commit : 주기적으로 오프셋 commint
-- group_id : consumer 그룹 이름
+```
+var conf = new ConsumerConfig
+{
+    GroupId, 
+    BootstrapServers,
+    AutoOffsetReset
+};
+```
+- GroupID : Consumer 그룹 아이디 설정
+- BootstrapServers : broker 리스트
+- AutoOffsetReset : 오프셋
 
+### Subscribe
+```
+using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
+{
+    c.Subscribe("dotnet");            // 토픽 이름
+    CancellationTokenSource cts = new CancellationTokenSource();
+    Console.CancelKeyPress += (_, e) => {
+    e.Cancel = true; // prevent the process from terminating.
+    cts.Cancel();
+            };
+```
 <br><br>URL : https://github.com/dpkp/kafka-python
 
 
