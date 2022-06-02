@@ -9,7 +9,7 @@ pipeline {
     stage('docker build and push') {
       steps {
         sh '''
-        apt install docker
+        sudo apt install docker
         docker build -t kube4team/test-django-jk .
         docker push kube4team/test-django-jk:1.0
         '''
