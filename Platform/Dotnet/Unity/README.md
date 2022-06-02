@@ -25,12 +25,12 @@ var conf = new ConsumerConfig
 ```
 using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
 {
-    c.Subscribe("dotnet");            // 토픽 이름
+    c.Subscribe("Bucket_Name");
     CancellationTokenSource cts = new CancellationTokenSource();
     Console.CancelKeyPress += (_, e) => {
-    e.Cancel = true; // prevent the process from terminating.
+    e.Cancel;
     cts.Cancel();
-            };
+};
 ```
 <br><br>URL : https://github.com/dpkp/kafka-python
 
