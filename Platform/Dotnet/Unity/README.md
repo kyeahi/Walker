@@ -3,6 +3,7 @@
 ## Installation
 `Install-Package Newtonsoft.Json`
 - Dotnet Json
+
 `Install-Package Confluent.Kafka -Version 1.8.2`
 - Kafka Dotnet API
 
@@ -41,11 +42,11 @@ using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
 
 # S3
 ## Installation
-`pip install boto3`<br>
-- Python AWS SDK > AWS 서비스 연동 및 실행
+`Install-Package AWSSDK.s3`<br>
+- AWS S3 Dotnet API
 
-`pip install awscli`
-- aws 명령줄 인터페이스 > 설치 후 aws configure > AccessID, AccessPW, Bucket_Region 등 설정
+`Install-Package AWSSDK.core`
+- 
 
 ## Command
 
