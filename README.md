@@ -1,5 +1,5 @@
 # Walker 🚶‍♂️🚶‍♀️ / 사람처럼 걷는 모델 학습하기 / MLOps
-zzzzzzzz
+
 ## Project Goal
 🔹 사람의 걷는 움직임은 각 관절간의 유기적인 연결에 의해 구현됩니다. 이를 세부적으로 각각 모델링하여 구현하기는 거의 불가능하며, 많은 연산량을 필요로 합니다. 해당 프로젝트는 실제 사람의 걷는 영상으로부터 **OpenPose 알고리즘을 통해 관절의 움직임을 프레임단위로 추적**하고, **Unity 환경에서의 모방학습을 거쳐 실제 사람의 거동과 유사한 움직임을 보이는 Walker를 구현하는 것을 목표**로 합니다. <br>
 
@@ -17,35 +17,34 @@ zzzzzzzz
 <img alt="Python" src ="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/>
 
 ### Backend
-● Django   
-● Unity  
+* Django   
+* Unity  
 
 ### DB  
-● Hadoop  
-● AWS S3  
+* Hadoop  
+* AWS S3  
 
 ### Frontend  
-● Unity   
+* Unity   
   
 ### ML  
-● Openpose  
-● Tensorflow  
-● Pytorch  
+* Openpose  
+* Tensorflow  
+* Pytorch  
 
 ### Platform  
-● Docker  
-● Kubernetes   
-● Kafka  
-● Spark  
-● Helm  
-
-### BI  
-● Tableau  
+* Docker  
+* Kubernetes   
+* Kafka  
+* Spark  
+* Helm  
+* Prometheus  
 
 ### CI/CD  
-● Github  
-● Jenkins  
-
+* Github  
+* Jenkins  
+* Helm  
+* Zookeeper  
 
 
 
@@ -62,8 +61,10 @@ zzzzzzzz
 |김세진|플랫폼|Docker, Kubernetes 환경구축|
 |김예빈|플랫폼|DB 관리, 데이터 송수신|
 |안현동|백앤드 및 플랫폼|데이터 전처리, 데이터 파이프라인 구축|
-|장서현|인공지능||
+|장서현|인공지능|-|
 
 
 
 ## Schedule
+* [백앤드 개발일지](https://github.com/kyeahi/Walker/blob/main/%EB%B0%B1%EC%97%94%EB%93%9C_%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80.md)<br>
+* [플랫폼 개발일지](https://github.com/kyeahi/Walker/blob/main/%ED%94%8C%EB%9E%AB%ED%8F%BC_%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80.md)
