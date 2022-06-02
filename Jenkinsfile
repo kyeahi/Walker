@@ -1,5 +1,12 @@
-pipeline {
-  agent any
+podTemplate(label: 'builder',
+            containers: [
+                containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
+                containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.19.16', command: 'cat', ttyEnabled: true)
+            ],
+            volumes: [
+                hostPathVolume(mountPath: '/home/jenkins/config', hostPath: '/home/k8s/django'),
+                hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+            ]) {
   node('builder') {
         stage('Checkout') {
              checkout scm   // gitlab으로부터 소스 다운
