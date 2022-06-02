@@ -26,7 +26,8 @@ podTemplate(label: 'builder',
             kubectl create deployment test-django-pod --image=kube4team/test-django-jk:1.0
             kubectl expose deployment test-django-pod --type=LoadBalancer --name=test-django-pod-svc --port=8000
             '''
-          }
-        }   
+        }
+      }
     }
+  }
 }
