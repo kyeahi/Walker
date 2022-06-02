@@ -1,4 +1,4 @@
-# hdfs
+# Hdfs
 
 ## Installation
 `pip install hdfs`
