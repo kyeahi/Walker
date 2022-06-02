@@ -1,23 +1,5 @@
-pipeline {
-  agent any
-  stages {
-    stage('git pull') {
-      steps {
-        // https://github.com/kyeahi/Walker will replace by sed command before RUN
-        git url: 'https://github.com/kyeahi/Walker.git', branch: 'main'
-      }
-    }
-    stage('k8s deploy'){
-      steps {
-        kubernetesDeploy(kubeconfigId: 'kubeconfig',
-                         configs: '*.yaml')
-      }
-    }    
-  }
-}
-
-def DOCKER_IMAGE_NAME = "lhi90/verymarket-main"           // 생성하는 Docker image 이름
-def DOCKER_IMAGE_TAGS = "0.2"  // 생성하는 Docker image 태그
+def DOCKER_IMAGE_NAME = "kube4team/MLops-main"           // 생성하는 Docker image 이름
+def DOCKER_IMAGE_TAGS = "0.2"       // 생성하는 Docker image 태그
 def NAMESPACE = "default"
 def VERSION = "${env.BUILD_NUMBER}"
 def DATE = new Date();
@@ -68,7 +50,7 @@ podTemplate(label: 'builder',
                             --docker-server=https://index.docker.io/v1/ \
                             --docker-username=${USERNAME} \
                             --docker-password=${PASSWORD} \
-                            --docker-email=hongin90@naver.com \
+                            --docker-email=kube4team \
                             -n ${NAMESPACE}
                         """
                         /* k8s-deployment.yaml 의 env값을 수정해준다(DATE로). 배포시 수정을 해주지 않으면 변경된 내용이 정상 배포되지 않는다. */
