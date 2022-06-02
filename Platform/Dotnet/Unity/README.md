@@ -32,7 +32,10 @@ using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
     cts.Cancel();
 };
 ```
-<br><br>URL : https://github.com/dpkp/kafka-python
+- 구독할 토픽 이름 설정
+
+
+<br><br>URL : https://docs.confluent.io/kafka-clients/dotnet/current/overview.html
 
 
 
