@@ -12,13 +12,9 @@ podTemplate(label: 'builder',
             checkout scm   // gitlab으로부터 소스 다운
         }
         stage('Docker build') {
-            steps {
-                sh '''
-                    sudo apt install docker
-                    docker build -t kube4team/test-django-jk .
-                    docker push kube4team/test-django-jk:1.0
-                '''
-            }
+            def customImage = docker.build("kube4team/test-django-jk:${env.BUILD_ID}")
+            customImage.push()
+            customImage.push('1.0')
         }
         stage('deploy kubernetes'){
             steps {
