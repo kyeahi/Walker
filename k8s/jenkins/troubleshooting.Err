@@ -82,3 +82,19 @@ kubectl edit statefulset my-controller          # statefulset 값 변경
 참고 : 
 https://support.cloudbees.com/hc/en-us/articles/360041796991-How-to-Troubleshoot-and-Address-Liveness-Readiness-probe-failure
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+
+
+
+#### port 변경.
+
+jenkins 의 기본 port 가 8080 인데 내 경우 8080 은 hdfs 가 사용 중이여서 바꿔야 했음.
+
+/etc/default/jenkins 에서 8080으로 되어있는걸 바꾸라고 했는데
+
+내 경우 jenkins 폴더가 없었음.
+
+value.yaml 수정
+
+  servicePort: 8080
+  targetPort: 8080
+  # For minikube, set this to NodePort, elsewhere use LoadBalancer
