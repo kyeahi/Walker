@@ -55,8 +55,17 @@ def sendfile():
         value_serializer=lambda v: dumps(v).encode('utf-8'),
     )
 
-    client_hdfs = InsecureClient('http://192.168.66.143' + ':9870') # IP 주소 적기
-    client_hdfs.upload('/', './media/result/' + str(num) + '.mp4')
+    import boto3
+    BUCKET_NAME = 'mycsvpt'
+
+    s3 = boto3.client(
+        service_name='s3',
+        region_name='ap-northeast-2',
+    )
+
+    s3.upload_file('./media/result/' + str(num) + '.mp4', BUCKET_NAME, 'mp4/' + str(num) + '.mp4')
+    # client_hdfs = InsecureClient('http://192.168.66.143' + ':9870') # IP 주소 적기
+    # client_hdfs.upload('/', './media/result/' + str(num) + '.mp4')
 
     producer.send('video', {
         'title': str(num) + '.mp4',
