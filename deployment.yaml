@@ -22,19 +22,3 @@ spec:
         env:
         - name: DATE
           value: 'DATE_STRING'
-
-
-         
-apiVersion: v1
-kind: Service
-metadata:
-  name: mlops-django-svc
-spec:
-  ports:
-    - name: mlops-django-svc
-      port: 8000
-      targetPort: 8000
-      nodePort: 32500
-  selector:
-    app: mlops-django
-  type: NodePort
