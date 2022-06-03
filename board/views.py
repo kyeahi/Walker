@@ -54,7 +54,7 @@ def sendfile():
     producer = KafkaProducer(
         acks=0,
         compression_type='gzip',
-        bootstrap_servers=['172.30.1.147:9092'],  # IP주소
+        bootstrap_servers=['172.16.1.64:9092'],  # IP주소
         value_serializer=lambda v: dumps(v).encode('utf-8'),
     )
 
