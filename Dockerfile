@@ -10,7 +10,7 @@ RUN pip install hdfs
 RUN pip install boto3
 RUN pip install awscli
 
-COPY . .
+COPY . /code/
 WORKDIR /code/Django
 
 CMD python manage.py runserver 0.0.0.0:8000
