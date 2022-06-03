@@ -1,3 +1,6 @@
+def DOCKER_IMAGE_NAME = "kube4team/test-django-jk"           
+def DOCKER_IMAGE_TAGS = "1.0" 
+
 podTemplate(label: 'builder',
             containers: [
                 containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
@@ -9,13 +12,23 @@ podTemplate(label: 'builder',
             ]) {
     node('builder') {
         stage('Checkout') {
-            checkout scm   // gitlab으로부터 소스 다운
+            git url: 'https://github.com/kyeahi/Walker.git', breach: 'main'
         }
         stage('Docker build') {
             container('docker') {
-                app = docker.build("kube4team/test-django-jk:${env.BUILD_ID}")
-                app.push()
-                app.push('1.0')
+                withCredentials([usernamePassword(
+                    credentialsId: '87f23b01-e4f1-496d-9071-00f1441d99a0',
+                    usernameVariable: 'USERNAME',
+                    passwordVariable: 'PASSWORD')]) {
+                        
+                        sh "ls -al"
+                        sh "ls -al /home/jenkins/config/"
+                        sh "cp /home/jenkins/config/.env ./.env"
+                        sh "ls -al"
+                        sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
+                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                        sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
+                    }
             }
         }
         stage('deploy kubernetes'){
@@ -28,3 +41,21 @@ podTemplate(label: 'builder',
         }
     }
 }
+
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker_hub_auth',
+                    usernameVariable: 'USERNAME',
+                    passwordVariable: 'PASSWORD')]) {
+
+                        sh "ls -al"
+                        sh "ls -al /home/jenkins/config/"
+                        sh "cp /home/jenkins/config/.env ./.env"
+                        sh "ls -al"
+                        sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
+                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                        sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
+                }
+            }
+        }
+[출처] [ 쿠버네티스 ] 젠킨스를 이용한 쿠버네티스 배포|작성자 한재리
+
