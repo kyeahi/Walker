@@ -1,4 +1,4 @@
-FROM kube4team/yb-django:1.0
+FROM python:3
 WORKDIR /code
 
 RUN pip install Django==3.1.3
@@ -12,3 +12,5 @@ RUN python manage.py makemigrations
 RUN python manage.py migrate
 
 CMD python manage.py runserver 0.0.0.0:8000
+
+
