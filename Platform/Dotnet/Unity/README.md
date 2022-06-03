@@ -84,4 +84,4 @@ using (TransferUtility transferUtility = new Amazon.S3.Transfer.TransferUtility(
 ```
 
 
-<br>URL : https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html
+<br>URL : https://docs.aws.amazon.com/ko_kr/sdk-for-net/v3/developer-guide/quick-start-s3-1-winvs.html
