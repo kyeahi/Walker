@@ -39,7 +39,7 @@ podTemplate(label: 'builder',
                             
                         sh "echo ${DATE}"
                         sh "sed -i.bak 's#DATE_STRING#${DATE}#' ./deployment.yaml"
-                        sh "kubectl apply -f ./deployment.yaml
+                        sh "kubectl apply -f ./deployment.yaml"
                             
                     }  
             }
