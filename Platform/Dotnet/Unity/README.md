@@ -46,20 +46,42 @@ using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
 - AWS S3 Dotnet API
 
 `Install-Package AWSSDK.core`
-- 
+- .Net AWS SDK
 
 ## Command
 
 ### Connection
-`s3 = boto3.client(accessID, accessPW, service_name, region_name)`
-- accessID, accessPW, service_name는 보안을 위해 awscli를 통해 설정해주는 것을 추천
-- 참고 URL : https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+`client = new AmazonS3Client(accesskeyID, accesskeyPW, bucketRegion);`
+- accessID, accessPW, bucketRegion 설정 필요
+- 보안을 위해 accessID, accessPW는 따로 터미널에서 설정해주는 것을 추천
 
 ### Upload
-`s3.upload(local_URL, Bucket_NAME, Object_Name)`
+```
+using (TransferUtility transferUtility = new Amazon.S3.Transfer.TransferUtility(accesskeyID, accesskeyPW, bucketRegion))
+{
+    TransferUtilityUploadRequest uploadRequest = new TransferUtilityUploadRequest
+    {
+        BucketName = bucketName,
+        Key = key,
+        FilePath = UploadFile
+    };
+    transferUtility.Upload(uploadRequest);
+}
+```
 
 ### Download
-`s3.download(Bucket_NAME, Bucket_URL, local_URL)`
+```
+using (TransferUtility transferUtility = new Amazon.S3.Transfer.TransferUtility(accesskeyID, accesskeyPW, bucketRegion))
+{
+    TransferUtilityDownloadRequest downloadRequest = new TransferUtilityDownloadRequest
+    {
+        BucketName = bucketName,
+        Key = Key,
+        FilePath = KeyPath
+    };
+    transferUtility.Download(downloadRequest);
+}
+```
 
 
 <br>URL : https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html
