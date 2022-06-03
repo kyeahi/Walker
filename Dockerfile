@@ -1,5 +1,4 @@
-FROM python:3
-ENV PYTHONUNBUFFERD 1
+FROM kube4team/yb-django:1.0
 RUN mkdir /code
 WORKDIR /code
 RUN pip install Django==3.1.3
