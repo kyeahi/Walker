@@ -29,7 +29,7 @@ spec:
     - name: mlops-django-svc
       port: 8000
       targetPort: 8000
-      nodePort: 20000
+      nodePort: 32500
   selector:
     app: mlops-django
   type: NodePort
