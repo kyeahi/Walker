@@ -1,5 +1,5 @@
 FROM kube4team/k8s-django:1.0
-WORKDIR /Django
+WORKDIR /code
 
 RUN pip install Django==3.1.3
 RUN pip install Django-bootstrap4
@@ -8,7 +8,7 @@ RUN pip install hdfs
 RUN pip install boto3
 RUN pip install awscli
 
-COPY . .
+COPY . /Django
 
 RUN python manage.py makemigrations
 RUN python manage.py migrate
