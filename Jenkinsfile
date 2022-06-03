@@ -12,9 +12,7 @@ podTemplate(label: 'builder',
             ]) {
     node('builder') {
         stage('Checkout') {
-            steps {
-                git url: 'https://github.com/kyeahi/Walker.git', breach: 'main'
-            }
+            checkout scm
         }
         stage('Docker build') {
             container('docker') {
