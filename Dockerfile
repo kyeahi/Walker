@@ -6,6 +6,7 @@ RUN pip install Django-bootstrap4
 RUN pip install kafka-python
 RUN pip install hdfs
 
+CMD ls -al
 COPY . .
 
 RUN python manage.py makemigrations
