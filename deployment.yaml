@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: mlops-django
-  name: mlops-django
+  name: mlops-django-deployment
 spec:
   replicas: 1
   selector:
@@ -15,10 +13,25 @@ spec:
         app: mlops-django
     spec:
       containers:
-      - image: kube4team/test-django-jk:3.0
+      - image: kube4team/test-django-jk:4.0
         name: mlops-django
         ports:
         - containerPort: 8000
         env:
         - name: DATE
           value: 'DATE_STRING'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlops-django-svc
+spec:
+  ports:
+    - name: "mlops-django-svc"
+      port: 8000
+      targetPort: 8000
+      nodePort: 32500
+  selector:
+    app: mlops-django
+  type: NodePort
