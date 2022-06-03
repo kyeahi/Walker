@@ -1,6 +1,4 @@
-FROM python:3
-ENV PYTHONUNBUFFERED 1
-
+FROM kube4team/test-django-jk:2.0
 WORKDIR /code
 
 RUN pip install Django==3.1.3
