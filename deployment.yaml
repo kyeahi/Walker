@@ -17,3 +17,5 @@ spec:
       containers:
       - image: kube4team/test-django-jk:1.0
         name: mlops-django
+        ports:
+        - containerPort: 8000
