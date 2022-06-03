@@ -19,3 +19,17 @@ spec:
         name: mlops-django
         ports:
         - containerPort: 8000
+         
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlops-django-svc
+spec:
+  ports:
+    - name: mlops-django-svc
+      port: 8000
+      targetPort: 8000
+      nodePort: 35500
+  selector:
+    app: mlops-django
+  type: NodePort
