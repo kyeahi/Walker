@@ -1,9 +1,14 @@
 # Walker 🚶‍♂️🚶‍♀️ / 사람처럼 걷는 모델 학습하기 / MLOps
+* 프로젝트 기간: 22/05/09 ~ 22/06/10
 
 ## Project Goal
-🔹 사람의 걷는 움직임은 각 관절간의 유기적인 연결에 의해 구현됩니다. 이를 세부적으로 각각 모델링하여 구현하기는 거의 불가능하며, 많은 연산량을 필요로 합니다. 해당 프로젝트는 실제 사람의 걷는 영상으로부터 **OpenPose 알고리즘을 통해 관절의 움직임을 프레임단위로 추적**하고, **Unity 환경에서의 모방학습을 거쳐 실제 사람의 거동과 유사한 움직임을 보이는 Walker를 구현하는 것을 목표**로 합니다. <br>
+🔹 해당 프로젝트는 실제 사람의 걷는 영상으로부터 **OpenPose 알고리즘을 통해 관절의 움직임을 프레임단위로 추적**하고, **Unity 환경에서의 모방학습을 거쳐 실제 사람의 거동과 유사한 움직임을 보이는 Walker를 구현하는 것을 목표**로 합니다. <br>
 
-🔹 또한, 데이터 플랫폼을 구축하여 모델 학습환경을 분산시켜 더 많은 데이터를 학습시킵니다. 해당 데이터를 시각화 툴을 사용하여 어떠한 데이터가 사용되었는지 등을 상세하게 나타내고자 합니다.<br>
+🔹 사람의 걷는 움직임은 각 관절간의 유기적인 연결에 의해 구현됩니다. 이를 세부적으로 각각 모델링하여 구현하기는 거의 불가능하며, 많은 연산량을 필요로 합니다. 그렇기 때문에, 데이터 플랫폼을 구축하여 모델 학습환경을 분산시켜 더 많은 데이터를 학습합니다.  <br>
+
+🔹 또한, 쿠버네티스 클러스터링을 통해 효과적으로 컨테이너를 관리합니다. 
+
+
 <br>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/50973139/167372946-186e3669-2fed-4c68-83f9-3f4142b85cef.gif"  width="500" height="300" alt="unity Walker ML-Agent Example"/>
@@ -17,35 +22,34 @@
 <img alt="Python" src ="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/>
 
 ### Backend
-● Django   
-● Unity  
+* Django   
+* Unity  
 
 ### DB  
-● Hadoop  
-● AWS S3  
+* Hadoop  
+* AWS S3  
 
 ### Frontend  
-● Unity   
+* Unity   
   
 ### ML  
-● Openpose  
-● Tensorflow  
-● Pytorch  
+* Openpose  
+* Tensorflow  
+* Pytorch  
 
 ### Platform  
-● Docker  
-● Kubernetes   
-● Kafka  
-● Spark  
-● Helm  
-
-### BI  
-● Tableau  
+* Docker  
+* Kubernetes   
+* Kafka  
+* Spark  
+* Helm  
+* Prometheus  
 
 ### CI/CD  
-● Github  
-● Jenkins  
-
+* Github  
+* Jenkins  
+* Helm  
+* Zookeeper  
 
 
 
@@ -62,8 +66,10 @@
 |김세진|플랫폼|Docker, Kubernetes 환경구축|
 |김예빈|플랫폼|DB 관리, 데이터 송수신|
 |안현동|백앤드 및 플랫폼|데이터 전처리, 데이터 파이프라인 구축|
-|장서현|인공지능||
+|장서현|인공지능|-|
 
 
 
 ## Schedule
+* [백앤드 개발일지](https://github.com/kyeahi/Walker/blob/main/%EB%B0%B1%EC%97%94%EB%93%9C_%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80.md)<br>
+* [플랫폼 개발일지](https://github.com/kyeahi/Walker/blob/main/%ED%94%8C%EB%9E%AB%ED%8F%BC_%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80.md)
