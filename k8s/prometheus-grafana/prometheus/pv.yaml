@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data-my-relaese-prometheus-pv-0
+  name: data-my-release-prometheus-pv-0
   namespace: monitoring
 spec:
   capacity:
