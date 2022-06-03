@@ -1,5 +1,4 @@
-FROM python:3
-ENV PYTHONUNBUFFERED 1
+FROM kube4team/test-django-jk:7.0
 
 WORKDIR /code
 
