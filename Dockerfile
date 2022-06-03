@@ -1,4 +1,4 @@
-FROM kube4team/yb-django:1.0
+FROM kube4team/k8s-django:1.0
 WORKDIR /code
 
 RUN pip install Django==3.1.3
