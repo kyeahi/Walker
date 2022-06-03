@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: gitops-nginx
-  name: gitops-nginx
+    app: MLops-django
+  name: MLops-django
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gitops-nginx
+      app: MLops-django
   template:
     metadata:
       labels:
-        app: gitops-nginx
+        app: MLops-django
     spec:
       containers:
-      - image: nginx
-        name: nginx
+      - image: kube4team/test-django-jk:1.0
+        name: MLops-django
