@@ -19,6 +19,11 @@ spec:
         name: mlops-django
         ports:
         - containerPort: 8000
+        env:
+        - name: DATE
+          value: 'DATE_STRING'
+
+
          
 apiVersion: v1
 kind: Service
