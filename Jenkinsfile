@@ -41,21 +41,3 @@ podTemplate(label: 'builder',
         }
     }
 }
-
-                withCredentials([usernamePassword(
-                    credentialsId: 'docker_hub_auth',
-                    usernameVariable: 'USERNAME',
-                    passwordVariable: 'PASSWORD')]) {
-
-                        sh "ls -al"
-                        sh "ls -al /home/jenkins/config/"
-                        sh "cp /home/jenkins/config/.env ./.env"
-                        sh "ls -al"
-                        sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
-                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                        sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
-                }
-            }
-        }
-[출처] [ 쿠버네티스 ] 젠킨스를 이용한 쿠버네티스 배포|작성자 한재리
-
