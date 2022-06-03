@@ -8,7 +8,7 @@ RUN pip install hdfs
 RUN pip install boto3
 RUN pip install awscli
 
-COPY . /code/
+WORKDIR /code/Django
 
 RUN python manage.py makemigrations
 RUN python manage.py migrate
