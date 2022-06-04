@@ -17,4 +17,4 @@ RUN pip install PyMySQL==1.0.2
 COPY Django /code/
 WORKDIR /code/Django
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
+CMD python manage.py runserver 0.0.0.0:8000
