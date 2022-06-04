@@ -3,7 +3,7 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /code
 
-RUN pip install Django==3.1.3
+RUN pip install Django==4.0.4
 RUN pip install Django-bootstrap4==22.1
 RUN pip install kafka-python==2.0.2
 RUN pip install hdfs==2.7.0
