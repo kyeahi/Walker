@@ -1,5 +1,5 @@
 def DOCKER_IMAGE_NAME = "kube4team/test-django-jk"           
-def DOCKER_IMAGE_TAGS = "8.0" 
+def DOCKER_IMAGE_TAGS = "9.0" 
 def DATE = new Date();
 
 podTemplate(label: 'builder',
