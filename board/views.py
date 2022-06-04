@@ -3,19 +3,29 @@
 
 import os
 from django.shortcuts import render
+from config.settings import BASE_DIR
 from . import models
 from kafka import KafkaProducer
 from json import dumps
 from hdfs import InsecureClient
 import time
 import boto3
+import environ
+
 
 num = 0
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+environ.Env.read_env(
+    env_file=os.path.join(BASE_DIR, '.env')
+)
 
 def uploadFile(request):
     global num
     if request.method == "POST":
-
 
         # Fetching the form data
         fileTitle = request.POST["fileTitle"]
@@ -46,8 +56,6 @@ def uploadFile(request):
         "files": documents
     })
 
-
-
 def sendfile():
     global num
     # 카프카 기본 설정
@@ -64,6 +72,15 @@ def sendfile():
         service_name='s3',
         region_name='ap-northeast-2',
     )
+
+    # BUCKET_NAME = 'mycsvpt'
+    #
+    # s3 = boto3.client(
+    #     service_name='s3',
+    #     region_name=os.environ['Region_name'],
+    #     aws_access_key_id=os.environ['aws_access_key_id'],
+    #     aws_secret_access_key=os.environ['aws_secret_access_key'],
+    # )
 
     s3.upload_file('./media/result/' + str(num) + '.mp4', BUCKET_NAME, 'mp4/' + str(num) + '.mp4')
     # client_hdfs = InsecureClient('http://172.30.1.248' + ':9870') # IP 주소 적기
