@@ -11,7 +11,7 @@ RUN pip install boto3
 RUN pip install awscli
 RUN pip install gunicorn==20.1.0
 
-COPY .Django /code/
+COPY . /code/
 WORKDIR /code/Django
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
