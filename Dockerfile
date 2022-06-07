@@ -1,4 +1,4 @@
-FROM python:3
+FROM kube4team/test-django-jk:18.0
 
 WORKDIR /code
 
