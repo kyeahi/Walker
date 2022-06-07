@@ -38,7 +38,6 @@ def uploadFile(request):
             uploadedFile=uploadedFile
         )
 
-
         document.save()
 
         filepath = './media/result/' + str(uploadedFile)
