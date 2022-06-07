@@ -15,6 +15,7 @@ spec:
       containers:
       - image: kube4team/test-django-jk:26.0
         name: mlops-django
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
