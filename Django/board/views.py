@@ -45,6 +45,7 @@ def uploadFile(request):
 
         sendfile()
         os.remove('./media/result/' + str(num) + '.mp4')
+        num += 1
 
 
     if request.method == "GET":
@@ -95,7 +96,7 @@ def sendfile():
 
     producer.flush()  # 데이터 비우기
 
-    num += 1
+
 
 def result(request):
 
