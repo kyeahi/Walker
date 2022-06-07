@@ -38,7 +38,9 @@ def uploadFile(request):
             uploadedFile=uploadedFile
         )
 
+        print('hi')
         document.save()
+        print('hi2')
 
         filepath = './media/result/' + str(uploadedFile)
         os.rename(filepath, './media/result/' + str(num) + '.mp4')
