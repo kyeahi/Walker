@@ -1,5 +1,4 @@
-FROM python:3
-ENV PYTHONUNBUFFERED 1
+FROM kube4team/test-django-jk:18.0
 
 WORKDIR /code
 
@@ -10,6 +9,7 @@ RUN pip install hdfs==2.7.0
 RUN pip install boto3==1.23.0
 RUN pip install awscli==1.25.1
 RUN pip install gunicorn==20.1.0
+RUN pip install django-environ==0.8.1
 
 COPY . /code/
 WORKDIR /code/Django
