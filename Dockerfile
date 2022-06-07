@@ -14,4 +14,5 @@ RUN pip install django-environ==0.8.1
 COPY . /code/
 WORKDIR /code/Django
 
+CMD python manage.py migrate
 CMD python manage.py runserver 0.0.0.0:8000
