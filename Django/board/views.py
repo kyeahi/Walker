@@ -38,9 +38,7 @@ def uploadFile(request):
             uploadedFile=uploadedFile
         )
 
-        print('hi')
         document.save()
-        print('hi2')
 
         filepath = './media/result/' + str(uploadedFile)
         os.rename(filepath, './media/result/' + str(num) + '.mp4')
@@ -68,7 +66,7 @@ def sendfile():
         value_serializer=lambda v: dumps(v).encode('utf-8'),
     )
 
-    BUCKET_NAME = 'mycsvpt'
+    BUCKET_NAME = 'team4bucket'
 
     s3 = boto3.client(
         service_name='s3',
