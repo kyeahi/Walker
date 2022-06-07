@@ -10,6 +10,7 @@ RUN pip install hdfs==2.7.0
 RUN pip install boto3==1.23.0
 RUN pip install awscli==1.25.1
 RUN pip install gunicorn==20.1.0
+RUN pip install Djago-environ==0.8.1
 
 COPY . /code/
 WORKDIR /code/Django
