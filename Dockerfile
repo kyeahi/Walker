@@ -10,9 +10,6 @@ RUN pip install hdfs==2.7.0
 RUN pip install boto3==1.23.0
 RUN pip install awscli==1.25.1
 RUN pip install gunicorn==20.1.0
-RUN pip install mysql==0.0.3
-RUN pip install mysqlclient==2.1.0
-RUN pip install PyMySQL==1.0.2
 
 COPY . /code/
 WORKDIR /code/Django
