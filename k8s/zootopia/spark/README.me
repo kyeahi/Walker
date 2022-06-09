@@ -1,1 +1,24 @@
-dd
+helm pull bitnami/spark
+tar xvfz spark-6.1.1.tgz
+
+mv zookeeper spark-6.1.1   # 관리를 위해 directory 이름을 version 이름으로 변경
+
+cd spark-6.1.1
+cp values.yaml default-values.yaml    # 향후 히스토리 확인을 위해 values 복사
+
+
+
+## spark values.yaml 수정
+
+service:
+  ## @param service.type Kubernetes Service type
+  ##
+  type: LoadBalancer
+  ## @param service.ports.http Spark client port for HTTP
+  ## @param service.ports.https Spark client port for HTTPS
+  ## @param service.ports.cluster Spark cluster port
+
+
+
+
+helm install spark spark-6.1.1 -n zootopia
