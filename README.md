@@ -38,18 +38,21 @@
 * Unity  
 
 ### Platform  
-* Docker  
+* Docker 
+* Helm   
 * Kubernetes   
 * Kafka  
+* Zookeeper  
 * Spark  
-* Helm  
 * Prometheus  
+* Grafana
+* Lens
 
 ### CI/CD  
 * Github  
 * Jenkins  
 * Helm  
-* Zookeeper  
+
 
 
 
