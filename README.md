@@ -59,8 +59,7 @@
 
 ## Blueprint
 ● 아키텍처
-
-![Screenshot from 2022-05-31 12-02-24](https://user-images.githubusercontent.com/97927143/171084710-52db38dc-1f16-4e06-a49b-819abe16f4fe.png)
+![image](https://user-images.githubusercontent.com/50973139/172970742-7fdb3508-09f9-4478-9615-13b6812caa91.png)
 
 ## Team members
 |팀원|담당 파트|역할|
